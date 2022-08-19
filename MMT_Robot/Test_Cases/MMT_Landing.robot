@@ -15,10 +15,14 @@ MMT-Hotels-TC-006
     [Documentation]
     ...    This Testcase Verify that User can search for default data
     Launch Browser
-
-    Click on Hotel    
+        
+    Pop Up    
     
-    CITY
+    Sleep    2s
+    
+    Click on Hotel
+    
+    Set City
     
     Select Rooms & Guests
     
@@ -40,8 +44,12 @@ MMT-Hotels-TC-007
     ...    This Testcase Verify that User can select near airport
     
     Launch Browser
-
-    Click on Hotel    
+        
+    Pop Up    
+    
+    Sleep    2s
+    
+    Click on Hotel
     
     Click on Search
     
@@ -55,8 +63,12 @@ MMT-Hotels-TC-008
     #FREE BREAKFAST
     
     Launch Browser
-
-    Click on Hotel    
+        
+    Pop Up    
+    
+    Sleep    2s
+    
+    Click on Hotel
     
     Click on Search
     
@@ -75,8 +87,12 @@ MMT-Hotels-TC-008
 MMT-Hotels-TC-009
     # Price(per night)
     Launch Browser
-
-    Click on Hotel    
+        
+    Pop Up    
+    
+    Sleep    2s
+    
+    Click on Hotel
     
     Click on Search
     
@@ -89,12 +105,16 @@ MMT-Hotels-TC-009
 MMT-Hotels-TC-010
     # (Your Budget)
     Launch Browser
-
-    Click on Hotel    
+        
+    Pop Up    
+    
+    Sleep    2s
+    
+    Click on Hotel
     
     Click on Search            
     
-    Scroll    1200
+    Selenium2Library.Scroll Element Into View    ${BUDGET_ARR}
     
     Select Budget Filter    3000    8000 
     
@@ -103,8 +123,12 @@ MMT-Hotels-TC-010
 MMT-Hotels-TC-011
     #Filter User Rating
     Launch Browser
-
-    Click on Hotel    
+        
+    Pop Up    
+    
+    Sleep    2s
+    
+    Click on Hotel
     
     Click on Search            
     
@@ -118,7 +142,13 @@ MMT-Hotels-TC-011
     
 MMT-Hotels-TC-012
     #Filter Star Category
-     Click on Hotel    
+    Launch Browser
+        
+    Pop Up    
+    
+    Sleep    2s
+    
+    Click on Hotel
     
     Click on Search            
     
@@ -130,7 +160,13 @@ MMT-Hotels-TC-012
     
 MMT-Hotels-TC-013
    #Filter Property Type  
-    Click on Hotel    
+     Launch Browser
+        
+    Pop Up    
+    
+    Sleep    2s
+    
+    Click on Hotel
     
     Click on Search            
     
@@ -142,9 +178,13 @@ MMT-Hotels-TC-013
     
 MMT-Hotels-TC-014
     #Amenities Filter
-    Launch Browser 
+    Launch Browser
+        
+    Pop Up    
     
-    Click on Hotel    
+    Sleep    2s
+    
+    Click on Hotel
     
     Click on Search            
     
@@ -152,13 +192,17 @@ MMT-Hotels-TC-014
     
     Select Amenites
     
-     End Browser
+    End Browser
 
 MMT-Hotels-TC-015
    #Guests Love Filter
-    Launch Browser 
+    Launch Browser
+        
+    Pop Up    
     
-    Click on Hotel    
+    Sleep    2s
+    
+    Click on Hotel
     
     Click on Search            
     
@@ -170,9 +214,13 @@ MMT-Hotels-TC-015
     
 MMT-Hotels-TC-016
     #Booking Prefernce Filter
-    Launch Browser 
+     Launch Browser
+        
+    Pop Up    
     
-    Click on Hotel    
+    Sleep    2s
+    
+    Click on Hotel
     
     Click on Search            
     
@@ -184,9 +232,13 @@ MMT-Hotels-TC-016
 
 MMT-Hotels-TC-017
     #House Rules Filter
-    Launch Browser 
+    Launch Browser
+        
+    Pop Up    
     
-    Click on Hotel    
+    Sleep    2s
+    
+    Click on Hotel
     
     Click on Search            
     
@@ -199,7 +251,11 @@ MMT-Hotels-TC-017
 MMT-Hotels-TC-018
    #Beds & Bedrooms Filter
     
-    Launch Browser 
+     Launch Browser
+        
+    Pop Up    
+    
+    Sleep    2s
     
     Click on Hotel    
     
@@ -214,7 +270,11 @@ MMT-Hotels-TC-018
 MMT-Hotels-TC-019
    #Back to Top BUTTON
     
-    Launch Browser 
+    Launch Browser
+        
+    Pop Up    
+    
+    Sleep    2s
     
     Click on Hotel    
     
@@ -229,9 +289,13 @@ MMT-Hotels-TC-019
 MMT-Hotels-TC-020
     #View Map
     
-    Launch Browser 
+    Launch Browser
+        
+    Pop Up    
     
-    Click on Hotel    
+    Sleep    2s
+    
+    Click on Hotel   
     
     Click on Search           
     
@@ -242,7 +306,11 @@ MMT-Hotels-TC-020
 MMT-Hotels-TC-021
     #Search Tab
    
-    Launch Browser 
+    Launch Browser
+        
+    Pop Up    
+    
+    Sleep    2s
     
     Click on Hotel    
     

@@ -19,8 +19,10 @@ MMT-Hotels-TC-001
     ...    This Testcase Verify that User can Navigate to URL and click on Search 
     
     Launch Browser
+        
+    Pop Up    
     
-    Run Keyword And Ignore Error    Wait
+    Sleep    2s
     
     Click on Hotel
 
@@ -33,16 +35,22 @@ MMT-Hotels-TC-002
     ...    This Testcase Verify that User can select Rooms & Guests with childrens and Search
     
     Launch Browser
-            
-    Run Keyword And Ignore Error    Wait
+        
+    Pop Up    
+    
+    Sleep    3s
     
     Click on Hotel
     
-    Select Rooms & Guests
+    sleep    3s
+    
+    Handling Pop Up
     
     Check-In Date  ${Departure_MonthYear}    ${Departure_Date}
     
     Check-Out Date  ${Departure_MMonthYear}    ${Departure_DDate}
+    
+    Select Rooms & Guests
   
     Select Children
     
@@ -58,10 +66,14 @@ MMT-Hotels-TC-003
     
     Launch Browser
         
-    Run Keyword And Ignore Error    Wait
+    Pop Up    
+    
+    Sleep    2s
     
     Click on Hotel
     
+    Handling Pop Up
+
     Select Rooms & Guests
     
     Select Children
@@ -82,9 +94,13 @@ MMT-Hotels-TC-004
     
     Launch Browser
         
-    Run Keyword And Ignore Error    Wait
+    Pop Up    
+    
+    Sleep    2s
     
     Click on Hotel
+    
+    Handling Pop Up
     
     Select Rooms & Guests
     
@@ -104,9 +120,13 @@ MMT-Hotels-TC-005
     
     Launch Browser
         
-    Run Keyword And Ignore Error    Wait
+    Pop Up    
+    
+    Sleep    2s
     
     Click on Hotel
+    
+    Handling Pop Up
     
     Select Rooms & Guests
     
