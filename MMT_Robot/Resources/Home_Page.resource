@@ -9,6 +9,16 @@ Resource    ../Base/Common_Functionalites.resource
 *** Variables ***
 
 # MMT_SEARCH 
+
+${Departure_MonthYear}    November2022
+${Departure_Date}    28
+
+${Departure_MMonthYear}    December2022
+${Departure_DDate}    01
+
+${RoomType}    16
+
+
 ${ARR_POPUP}           document.elementFromPoint(1115, 54).click();
 ${POPUP}               //div[@class='autopop__wrap autopop__wrap__new makeFlex column defaultCursor']
 
@@ -22,12 +32,12 @@ ${SEARCH}              //button[@id='hsw_search_button']
 ${CHECKIN}             id=checkin
 ${CHECK_IN_DATE}       (//div[text()='26'])[1]
 ${CHECK_OUT}           id=checkout
-${CHECK_OUT_DATE}      (//div[text()='31'])[2]  
+${CHECK_OUT_DATE}      (//div[text()='27'])[1]  
 ${MonthYearValue_IN_Xpath}     (//div[@class='DayPicker-Caption'])[1]
 ${MonthYearValue_OUT_Xpath}    (//div[@class='DayPicker-Caption'])[2]
 ${CHECK_OUT_ARR}               //span[@aria-label='Next Month']
 ${GUEST}                       id=guest 
-${ADULTS}                      (//li[text()='3'])
+${ADULTS}                      (//li[text()='2'])
 ${ADD_CHILDREN}                //div[@class='addRooomDetails']//ul[2]//li[contains(text(),'0')]
 ${APPLY_CHANGES}               //button[contains(text(),'APPLY')]
 ${PRICE_PER_NIGHT}             //label[contains(text(),'₹2500-₹5000')] 
@@ -46,20 +56,21 @@ ${FNF}                 //div[@id='Listing_hotel_0']
 # FILTERS
 ${NEAR_AIRPORT}        //span[contains(text(),'T3 - Delhi Airport (IGI), Delhi')]
 ${SELECT_BREAKFAST}    //span[contains(text(),'Free Breakfast')]
-${SELECT_PRICE}        //label[contains(text(),'₹ 7500 - ₹ 9500')]  
+${SELECT_PRICE}        //label[contains(text(),'₹ 9500 - ₹ 12500')]
 ${SELECT_BUDGET_MIN}   //input[@placeholder='Min']     
 ${SELECT_BUDGET_MAX}   //input[@placeholder='Max']  
 ${BUDGET_ARR}          //div[@class='range']//button   
 ${USER_RATING}         //span[contains(text(),'4 Star')]
 ${STAR_RATING}         //span[contains(text(),'4 & above (Very Good)')]
 ${CLICK_PROPERTY}      id=hlistpg_proptypes_show_more   
-${SELCT_PROPERTY}      //input[@aria-label='Villa']
+${SELCT_PROPERTY}      //div[@id='MERGE_PROPERTY_TYPE']//li[3]//span[1]//label[1]
 ${ENTER AMENITIES}     //input[@placeholder='Search amenities']
 ${SELECT_AMENITIES}    //label[@for='Balcony/Terrace'] 
 ${SELECT_G_LOVE}       //label[@for='Swimming Pool'] 
 ${SELCT_BP}            (//span[contains(text(),'Caretaker')])[1]    
 ${SELECT_HRULES}       //span[contains(text(),'Pets Allowed')]
-${SELECT_BEDS&BEDROOMS}    //p[normalize-space()='Bedrooms']
+${CLICK_BEDS&BEDROOMS}     //div[@id='ROOMS_AND_BEDS']//li[2]
+${SELECT_BEDS&BEDROOMS}    (//ul[@class='itemCounter font12 darkText'])[2]//li[2]
 ${BACK_TO_TOP}         //a[@id='back_to_top_button']
 ${VIEW_MAP}            //button[@data-testid='listingPgMapImg']  
 ${INPUT_LOC}           /Cl//input[@placeholder='Search location or property']
@@ -69,8 +80,8 @@ ${DONATION}            //label[@for='donate']
                  
 #HOTELS DETAILS
   
-${BOOK_THIS_NOW}       //button[@id='detpg_headerright_book_now']
-${BOOK_BUFFER}        //div[@class='cirLdr white ']
+${BOOK_THIS_NOW}       //*[contains(text(),'BOOK THIS NOW')]                            #  //button[@id='detpg_headerright_book_now']
+${BOOK_BUFFER}         //div[@class='cirLdr white ']
 ${VIEW_OTHER_ROOMS}    //a[@id='detpg_headerright_other_rooms']
 ${VIEW_IMAGES}         //button[@id='detpg_headerleft_view_photos'] 
 ${TITLE_HOTEL}         //p[@id='seoH1DontRemove']
@@ -79,7 +90,11 @@ ${SELECT ROOM}                  (//p[text()='SELECT ROOM'])[16]
 ${FREE_CANCELLATION_FILTER}     //label[@for='FREE_CANCELLATION']
 ${MORE_DETAILS}                 //div[@id='room1']//a[@class='latoBlack font14 capText'][normalize-space()='More Details']
 ${INDEX_ROOM_TYPE}              //p[@class='rmTypeDropDown__heading']
-${USER_REVIEWS}                 //a[@id='detpg_user_reviews']
+${SELECT_ROOM_TYPE}             //div[@class='rmHeader ']//li[1]
+${USER_RATINGS_&_REVIEWS}       //h2[normalize-space()='User Ratings & Reviews']
+${AMENITIES}                    //a[@id='detpg_hotel_facilities']
+
+
 ${VIEW_ALL_ROOMS_INCLUSIONS}    //a[normalize-space()='View All Room Inclusions']
 ${CANCELLATION_POLICY}          //a[normalize-space()='Cancellation policy details']
 ${T&C}                          //a[normalize-space()='T&Cs']
@@ -100,22 +115,29 @@ ${SPECIAL_REQUEST}              //label[normalize-space()='Airport transfer']
 ${PAY_NOW}                      //a[normalize-space()='Pay Now']
 ${ADD_INSURANCE}                //button[normalize-space()='ADD']
 
+ # CheckOUT #
+
+${UPI}                         //li[@class='selected box-padding']
+${ENTER_UPI}                   //input[@id='inputVpa']
+${VERIFY_N_PAY}                //button[normalize-space()='verify & pay']
+
 *** Keywords ***
                                                         # Search #
 Click on Hotel
-    Double Click Element    ${HOTELS}    
+    Sleep     2s
+    Click Element    ${HOTELS}    
      
 Click on Search
     Click Element    ${SEARCH}
     
-Pop Up 
+Hindi Language Pop Up 
     Run Keyword And Ignore Error    Click Element    ${PP1}
     Sleep    2s    
 
 Pop Up 2
     Execute Javascript    ${ARR_POPUP}   
 
-Handling Pop Up
+Handling Log-In Pop Up
     Run Keyword And Ignore Error       Pop Up 2 
     
 #   Run Keyword And Ignore Error    Click Element    ${PP2}     
@@ -178,7 +200,7 @@ Apply Changes
     Wait Until Element Is Visible   ${APPLY_CHANGES}   
     Click Button    ${APPLY_CHANGES}   
    
-Apply Price
+Apply Price Filter on Search Page
     Click Element   ${PRICE_PER_NIGHT}
 
 Add Another Room
@@ -210,13 +232,12 @@ Select Near Airport Filter
 Select Breakfast Filter
     Click Element   ${SELECT_BREAKFAST} 
     
-Select Prize Filter
-    Click Element   ${SELECT_PRICE} 
+Select Prize Filter 
+    Click Element    ${SELECT_PRICE} 
     
 Select Budget Filter
-    [Arguments]     ${SELECT_BUDGET_MIN}    ${SELECT_BUDGET_MAX}
-    Click Element   ${SELECT_BUDGET_MIN}
-    Click Element   ${SELECT_BUDGET_MAX}
+    Input Text    ${SELECT_BUDGET_MIN}    3000
+    Input Text   ${SELECT_BUDGET_MAX}     10000
     Click Element   ${BUDGET_ARR}  
     
 Select User Rating
@@ -226,8 +247,8 @@ Select Star Rating
     Click Element   ${STAR_RATING}
     
 Select Property Type
-    Click Element   ${CLICK_PROPERTY}   
-    Sleep    3s    
+#    Click Element   ${CLICK_PROPERTY} 
+#    Sleep    3s    
     Click Element   ${SELCT_PROPERTY} 
    
 Select Amenites 
@@ -244,6 +265,7 @@ Select House Rules
     Click Element   ${SELECT_HRULES}     
  
 Select Beds & Bedrooms
+    Click Element   ${CLICK_BEDS&BEDROOMS}    
     Click Element   ${SELECT_BEDS&BEDROOMS}    
     
 Back to Top
@@ -257,8 +279,11 @@ Search Location or Property
     Click Element   ${SELECT_LOC}       
     
 Book this Now
-    Click Element    ${BOOK_THIS_NOW}
-    Element Should Be Visible      ${BOOK_BUFFER}    
+    Sleep     5s
+    Click Element    ${BOOK_THIS_NOW} 
+    Run Keyword And Ignore Error    Wait Until Element Is Not Visible    ${BOOK_BUFFER}           
+    Sleep    2s    
+    #Wait Until Element Is Not Visible    ${BOOK_BUFFER}    timeout=60s
     
 View Other Rooms
     Click Element    ${VIEW_OTHER_ROOMS}
@@ -281,10 +306,15 @@ Select more details
     Click Element    ${MORE_DETAILS}    
     
 Index room type
-    Click Element    ${INDEX_ROOM_TYPE}    
+    Click Element    ${INDEX_ROOM_TYPE}  
+    Click Element    ${SELECT_ROOM_TYPE}     
+    
+View Facilities
+    Scroll Element Into View    ${AMENITIES}
+    Click Element    ${AMENITIES}    
     
 View User Reviews
-    Click Element    ${USER_REVIEWS}    
+    Click Element    ${USER_RATINGS_&_REVIEWS}     
     
 View all Room Inclusions
     Click Element    ${VIEW_ALL_ROOMS_INCLUSIONS}    
@@ -326,5 +356,15 @@ LoginPopup
     ${LoginPopUp}    Element Should Be Visible    ${POPUP}    message=popoupnotvisible
     Log    ${LoginPopUp} 
   
+                                            # CHECKOUT PAGE #
 
+Select UPI Payment
+    Click Element    ${UPI}    
+   
+Enter UPI Id
+    Click Element    ${ENTER_UPI}    
+    Input Text       ${ENTER_UPI}    8485860700
+    
+Verify & Pay        
+    Click Element    ${VERIFY_N_PAY}    
 
