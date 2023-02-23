@@ -2,7 +2,9 @@
 Documentation    This file contains keywords for the automation
 ...    
 Library    SeleniumLibrary
-Resource    ../Resources/Home_Page.resource
+Resource    ../Resources/MMT_Search.Resource
+Resource    ../Resources/MMT_Landing.Resource
+Resource    ../Resources/MMT_Hotel_Details.resource
 Resource    ../Base/Common_Functionalites.resource
 
 *** Variables ***
@@ -11,7 +13,7 @@ Resource    ../Base/Common_Functionalites.resource
 
 *** Test Cases *** 
 
-########################  --->      SEARcH PAGE         <--- ########################
+########################  --->      SEARCH PAGE         <--- ###########################
 
 MMT-Hotels-TC-001   
     [Documentation]
@@ -141,7 +143,23 @@ MMT-Hotels-TC-005
    
     End Browser
     
-
+MMT-Hotels-TC-RS
+    [Documentation]
+    ...    This Testcase Verify that User can Remove Room from Booking 
+    
+    Launch Browser
+        
+    Hindi Language Pop Up     
+    
+    Click on Hotel
+    
+    Handling Log-In Pop Up
+    
+    Select Recent Search
+   
+    End Browser
+    
+ 
 
 ###################################  --->      LANDING PAGE         <--- #####################################
 
@@ -369,9 +387,6 @@ MMT-Hotels-TC-014
     
     Sleep     3s 
     
- #   Select 1st Hotel 
-    
- #   End Browser
 
 MMT-Hotels-TC-015
    #Guests Love Filter
